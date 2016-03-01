@@ -1,0 +1,84 @@
+## house information
+* priceAndTips
+  * displayPrice
+  * promotionWeek
+  * promotionMonth
+  * isTejia
+* luBase
+  * lodgeUnitName
+  * yanzhen
+  * shipai
+  * isFlashBook
+  * isNew
+  * online
+* landlord
+  * landlordPersonRole
+  * landlordName
+  * landlordId
+  * zhimaScore
+  * mobileChecked
+  * emailChecked
+  * realIdentity
+  * realHeadImage
+* detail
+  * leaseType
+  * area
+  * houseType
+  * guestNum
+  * liveTips
+  * displayAddress
+  * latitude
+  * longitude
+  * roomInnerIntro
+  * serviceIntro
+  * trafficIntro
+  * toilet
+  * foreigner
+  * maxDays
+  * minDays
+  * addPriceDesc
+  * cashplege
+  * cashPledgeOnline
+  * cashPledgeFree
+  * aroundVillageIntro
+  * sheetChange
+  * addTenant
+  * addTenantTips
+* bed
+  * bedInfo
+  * bedNum
+  * bedNumTip
+* facility
+  * wirelessnetwork
+  * shower
+  * tv
+  * aircondition
+  * heater
+  * smoke
+  * drinking
+  * slippers
+  * toiletpaper
+  * towel
+  * toiletries
+  * icebox
+  * washer
+  * elevator
+  * iscook
+  * accesssys
+  * parkingspace
+  * wirednetwork
+  * brush
+  * soap
+  * hotbathtub
+  * pet
+  * meet
+* landlordDemand
+  * useRule
+  * unReceiveSex
+  * unReceiveAge
+* dealRule
+  * cancelPayAllDay
+  * prepayRate
+  * cancelPunishDay
+* cityInfo
+  * city_id
