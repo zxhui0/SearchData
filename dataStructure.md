@@ -1,5 +1,7 @@
-%% d
 ## house information
+* [luId]
+* [id]: ![pk][pk]
+* [RecordDateTime]
 * priceAndTips
   * displayPrice
   * promotionWeek
@@ -86,7 +88,11 @@
 
 ## landlord information
 
+* [id] : ![pk][pk]
+* [RecordDateTime]
 * lodgeUnit
+  * a list of
+    * luId
 * landlordName
 * onlineReplyRate
 * avgConfrimMinutes
@@ -108,3 +114,19 @@
   * cityName
   * hometown
   * zhimaScore
+
+## Search
+* a list of:
+  * [id]:![pk][pk]
+  * luId:
+  * luTitle
+  * luLeaseType
+  * displayAddr
+  * luPrice
+  * [listingOrder]
+  * [CityID]
+  * [SearchDateTime]
+
+
+[pk]:  http://www.functionx.com/access/buttons/primarykey2.gif
+[fk]: http://powerbuilder.hyderabad-colleges.com/images/6/foreign-key-icon.gif
