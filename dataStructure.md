@@ -82,3 +82,28 @@
   * cancelPunishDay
 * cityInfo
   * city_id
+
+## landlord information
+
+* lodgeUnit
+* landlordName
+* onlineReplyRate
+* avgConfrimMinutes
+* confirmRate
+* landlordPersonRole
+* onlineRooms
+* bookTotalCount
+* realIdentity
+* realHeadImage
+* mobileChecked
+* emailChecked
+* landlordInfo
+  * sex
+  * ageGroup
+  * zodiac
+  * bloodType
+  * education
+  * profession
+  * cityName
+  * hometown
+  * zhimaScore
