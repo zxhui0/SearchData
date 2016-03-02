@@ -1,3 +1,4 @@
+%% d
 ## house information
 * priceAndTips
   * displayPrice
