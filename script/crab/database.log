@@ -1,0 +1,4 @@
+2016-03-05 22:39:32,611 - base - ERROR - Failed query : INSERT INTO page ('num') VALUES ('20')
+2016-03-05 22:41:26,804 - DB - ERROR - Failed query : INSERT INTO page ('num') VALUES ('20')
+2016-03-05 23:04:49,516 - DB - INFO - Successful query : INSERT INTO page (num) VALUES ('20')
+2016-03-05 23:05:47,456 - DB - INFO - Successful query : INSERT INTO page (num) VALUES ('405')

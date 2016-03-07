@@ -1,0 +1,803 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="f9d642fc-76d0-455d-a6f8-667e3794dc03" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/connector.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/generator.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../xiaozhu/script/.idea/misc.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../xiaozhu/script/.idea/modules.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../xiaozhu/script/.idea/script.iml" />
+      <change type="NEW" beforePath="" afterPath="$APPLICATION_CONFIG_DIR$/options/updates.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../xiaozhu/script/.idea/vcs.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../xiaozhu/script/.idea/workspace.xml" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/crab.db" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/crab_empty.db" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/database.log" afterPath="" />
+      <change type="DELETED" beforePath="$USER_HOME$/Lectures.md" afterPath="" />
+      <change type="DELETED" beforePath="$USER_HOME$/README.md" afterPath="" />
+      <change type="DELETED" beforePath="$USER_HOME$/lecture01_introduction/EECS545-Lecture01 Intro.pptx" afterPath="" />
+      <change type="DELETED" beforePath="$USER_HOME$/lecture02_linear-algebra-optimization/Lecture 2 - Linear Algebra and Optimization.html" afterPath="" />
+      <change type="DELETED" beforePath="$USER_HOME$/lecture02_linear-algebra-optimization/Lecture 2 - Linear Algebra and Optimization.ipynb" afterPath="" />
+      <change type="DELETED" beforePath="$USER_HOME$/lecture02_linear-algebra-optimization/Singular_value_decomposition.gif" afterPath="" />
+      <change type="DELETED" beforePath="$USER_HOME$/lecture03_convex-functions-optimization/Lecture 3 part 2.pdf" afterPath="" />
+      <change type="DELETED" beforePath="$USER_HOME$/lecture03_convex-functions-optimization/lecture03_Convex-Functions-and-Optimization.ipynb" afterPath="" />
+      <change type="DELETED" beforePath="$USER_HOME$/lecture03_convex-functions-optimization/lecture03_Convex-Functions-and-Optimization.pdf" afterPath="" />
+      <change type="DELETED" beforePath="$USER_HOME$/lecture04_linear-regression-part1/images/classification-regression.png" afterPath="" />
+      <change type="DELETED" beforePath="$USER_HOME$/lecture04_linear-regression-part1/images/l2-reg-coeffs.png" afterPath="" />
+      <change type="DELETED" beforePath="$USER_HOME$/lecture04_linear-regression-part1/images/l2-reg-erms-vs-lambda.png" afterPath="" />
+      <change type="DELETED" beforePath="$USER_HOME$/lecture04_linear-regression-part1/images/l2-reg-lambda-0.png" afterPath="" />
+      <change type="DELETED" beforePath="$USER_HOME$/lecture04_linear-regression-part1/images/l2-reg-lambda-18.png" afterPath="" />
+      <change type="DELETED" beforePath="$USER_HOME$/lecture04_linear-regression-part1/images/lasso-vs-ridge.png" afterPath="" />
+      <change type="DELETED" beforePath="$USER_HOME$/lecture04_linear-regression-part1/images/least-squares-objective.png" afterPath="" />
+      <change type="DELETED" beforePath="$USER_HOME$/lecture04_linear-regression-part1/images/least-squares-projection.png" afterPath="" />
+      <change type="DELETED" beforePath="$USER_HOME$/lecture04_linear-regression-part1/images/overfitting.png" afterPath="" />
+      <change type="DELETED" beforePath="$USER_HOME$/lecture04_linear-regression-part1/images/p-norms.png" afterPath="" />
+      <change type="DELETED" beforePath="$USER_HOME$/lecture04_linear-regression-part1/images/polynomial-coefficients.png" afterPath="" />
+      <change type="DELETED" beforePath="$USER_HOME$/lecture04_linear-regression-part1/lecture04_final_linear-regression-part-1.ipynb" afterPath="" />
+      <change type="DELETED" beforePath="$USER_HOME$/lecture04_linear-regression-part1/lecture04_final_linear-regression-part-1.pdf" afterPath="" />
+      <change type="DELETED" beforePath="$USER_HOME$/lecture05_linear-regression-part2/.ipynb_checkpoints/lecture05_final_linear-regression-part-2-checkpoint.ipynb" afterPath="" />
+      <change type="DELETED" beforePath="$USER_HOME$/lecture05_linear-regression-part2/images/classification-regression.png" afterPath="" />
+      <change type="DELETED" beforePath="$USER_HOME$/lecture05_linear-regression-part2/images/l2-reg-coeffs.png" afterPath="" />
+      <change type="DELETED" beforePath="$USER_HOME$/lecture05_linear-regression-part2/images/l2-reg-erms-vs-lambda.png" afterPath="" />
+      <change type="DELETED" beforePath="$USER_HOME$/lecture05_linear-regression-part2/images/l2-reg-lambda-0.png" afterPath="" />
+      <change type="DELETED" beforePath="$USER_HOME$/lecture05_linear-regression-part2/images/l2-reg-lambda-18.png" afterPath="" />
+      <change type="DELETED" beforePath="$USER_HOME$/lecture05_linear-regression-part2/images/lasso-vs-ridge.png" afterPath="" />
+      <change type="DELETED" beforePath="$USER_HOME$/lecture05_linear-regression-part2/images/least-squares-projection.png" afterPath="" />
+      <change type="DELETED" beforePath="$USER_HOME$/lecture05_linear-regression-part2/images/locally-weighted-regression.png" afterPath="" />
+      <change type="DELETED" beforePath="$USER_HOME$/lecture05_linear-regression-part2/images/lwlr-comparison.png" afterPath="" />
+      <change type="DELETED" beforePath="$USER_HOME$/lecture05_linear-regression-part2/images/lwlr-kernel-width.png" afterPath="" />
+      <change type="DELETED" beforePath="$USER_HOME$/lecture05_linear-regression-part2/images/newton.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$USER_HOME$/lecture05_linear-regression-part2/images/overfitting.png" afterPath="" />
+      <change type="DELETED" beforePath="$USER_HOME$/lecture05_linear-regression-part2/images/p-norms.png" afterPath="" />
+      <change type="DELETED" beforePath="$USER_HOME$/lecture05_linear-regression-part2/images/polynomial-coefficients.png" afterPath="" />
+      <change type="DELETED" beforePath="$USER_HOME$/lecture05_linear-regression-part2/lecture05_final_linear-regression-part-2.ipynb" afterPath="" />
+      <change type="DELETED" beforePath="$USER_HOME$/lecture05_linear-regression-part2/lecture05_final_linear-regression-part-2.pdf" afterPath="" />
+      <change type="DELETED" beforePath="$USER_HOME$/lecture05_linear-regression-part2/newton_plot.py" afterPath="" />
+      <change type="DELETED" beforePath="$USER_HOME$/lecture06_generative-models-gda/.ipynb_checkpoints/Lecture 6 - Logistic Regression-checkpoint.ipynb" afterPath="" />
+      <change type="DELETED" beforePath="$USER_HOME$/lecture06_generative-models-gda/.ipynb_checkpoints/Lecture 6 - Logistic Regression_Saket-checkpoint.ipynb" afterPath="" />
+      <change type="DELETED" beforePath="$USER_HOME$/lecture06_generative-models-gda/.ipynb_checkpoints/lecture06_saket_probability-models-logistic-regression-checkpoint.ipynb" afterPath="" />
+      <change type="DELETED" beforePath="$USER_HOME$/lecture06_generative-models-gda/cov.png" afterPath="" />
+      <change type="DELETED" beforePath="$USER_HOME$/lecture06_generative-models-gda/eecs545-satinder-lecture04-LogisticRegression.pdf" afterPath="" />
+      <change type="DELETED" beforePath="$USER_HOME$/lecture06_generative-models-gda/images/classification-regression.png" afterPath="" />
+      <change type="DELETED" beforePath="$USER_HOME$/lecture06_generative-models-gda/images/l2-reg-coeffs.png" afterPath="" />
+      <change type="DELETED" beforePath="$USER_HOME$/lecture06_generative-models-gda/images/l2-reg-erms-vs-lambda.png" afterPath="" />
+      <change type="DELETED" beforePath="$USER_HOME$/lecture06_generative-models-gda/images/l2-reg-lambda-0.png" afterPath="" />
+      <change type="DELETED" beforePath="$USER_HOME$/lecture06_generative-models-gda/images/l2-reg-lambda-18.png" afterPath="" />
+      <change type="DELETED" beforePath="$USER_HOME$/lecture06_generative-models-gda/images/lasso-vs-ridge.png" afterPath="" />
+      <change type="DELETED" beforePath="$USER_HOME$/lecture06_generative-models-gda/images/least-squares-projection.png" afterPath="" />
+      <change type="DELETED" beforePath="$USER_HOME$/lecture06_generative-models-gda/images/locally-weighted-regression.png" afterPath="" />
+      <change type="DELETED" beforePath="$USER_HOME$/lecture06_generative-models-gda/images/lwlr-comparison.png" afterPath="" />
+      <change type="DELETED" beforePath="$USER_HOME$/lecture06_generative-models-gda/images/lwlr-kernel-width.png" afterPath="" />
+      <change type="DELETED" beforePath="$USER_HOME$/lecture06_generative-models-gda/images/murphy.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$USER_HOME$/lecture06_generative-models-gda/images/newton.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$USER_HOME$/lecture06_generative-models-gda/images/overfitting.png" afterPath="" />
+      <change type="DELETED" beforePath="$USER_HOME$/lecture06_generative-models-gda/images/p-norms.png" afterPath="" />
+      <change type="DELETED" beforePath="$USER_HOME$/lecture06_generative-models-gda/images/polynomial-coefficients.png" afterPath="" />
+      <change type="DELETED" beforePath="$USER_HOME$/lecture06_generative-models-gda/lecture06_final_probability-models-logistic-regression.ipynb" afterPath="" />
+      <change type="DELETED" beforePath="$USER_HOME$/lecture06_generative-models-gda/lecture06_final_probability-models-logistic-regression.pdf" afterPath="" />
+      <change type="DELETED" beforePath="$USER_HOME$/lecture06_generative-models-gda/linear_db.png" afterPath="" />
+      <change type="DELETED" beforePath="$USER_HOME$/lecture06_generative-models-gda/newton_plot.py" afterPath="" />
+      <change type="DELETED" beforePath="$USER_HOME$/lecture07_nb-lda-perceptron/.ipynb_checkpoints/lecture07_valli_nb-lda-perceptron-checkpoint.ipynb" afterPath="" />
+      <change type="DELETED" beforePath="$USER_HOME$/lecture07_nb-lda-perceptron/images/animated_drunk_driving.gif" afterPath="" />
+      <change type="DELETED" beforePath="$USER_HOME$/lecture07_nb-lda-perceptron/images/linear-discriminant-least-squares.png" afterPath="" />
+      <change type="DELETED" beforePath="$USER_HOME$/lecture07_nb-lda-perceptron/images/linear-gda.png" afterPath="" />
+      <change type="DELETED" beforePath="$USER_HOME$/lecture07_nb-lda-perceptron/images/separation_alone.png" afterPath="" />
+      <change type="DELETED" beforePath="$USER_HOME$/lecture07_nb-lda-perceptron/images/separation_and_variance.png" afterPath="" />
+      <change type="DELETED" beforePath="$USER_HOME$/lecture07_nb-lda-perceptron/lecture07_final_nb-gda-lda.ipynb" afterPath="" />
+      <change type="DELETED" beforePath="$USER_HOME$/lecture07_nb-lda-perceptron/lecture07_final_nb-gda-lda.pdf" afterPath="" />
+      <change type="DELETED" beforePath="$USER_HOME$/lecture07_nb-lda-perceptron/valli/.ipynb_checkpoints/lecture07_valli_nb-lda-perceptron-checkpoint.ipynb" afterPath="" />
+      <change type="DELETED" beforePath="$USER_HOME$/lecture07_nb-lda-perceptron/valli/files/MinSquareErrorLDA.png" afterPath="" />
+      <change type="DELETED" beforePath="$USER_HOME$/lecture07_nb-lda-perceptron/valli/files/OutlierIllustration.png" afterPath="" />
+      <change type="DELETED" beforePath="$USER_HOME$/lecture07_nb-lda-perceptron/valli/files/bayes-rule.png" afterPath="" />
+      <change type="DELETED" beforePath="$USER_HOME$/lecture07_nb-lda-perceptron/valli/files/cond_ind.png" afterPath="" />
+      <change type="DELETED" beforePath="$USER_HOME$/lecture07_nb-lda-perceptron/valli/files/decision_regions.png" afterPath="" />
+      <change type="DELETED" beforePath="$USER_HOME$/lecture07_nb-lda-perceptron/valli/files/naive_bayes_background.png" afterPath="" />
+      <change type="DELETED" beforePath="$USER_HOME$/lecture07_nb-lda-perceptron/valli/files/perceptron.gif" afterPath="" />
+      <change type="DELETED" beforePath="$USER_HOME$/lecture07_nb-lda-perceptron/valli/files/separation_alone.png" afterPath="" />
+      <change type="DELETED" beforePath="$USER_HOME$/lecture07_nb-lda-perceptron/valli/files/separation_and_variance.png" afterPath="" />
+      <change type="DELETED" beforePath="$USER_HOME$/lecture07_nb-lda-perceptron/valli/files/spam.gif" afterPath="" />
+      <change type="DELETED" beforePath="$USER_HOME$/lecture07_nb-lda-perceptron/valli/lecture07_valli_nb-lda-perceptron.ipynb" afterPath="" />
+      <change type="DELETED" beforePath="$USER_HOME$/lecture07_nb-lda-perceptron/valli/styles/custom.css" afterPath="" />
+      <change type="DELETED" beforePath="$USER_HOME$/lecture07_nb-lda-perceptron/valli/testdata.txt" afterPath="" />
+      <change type="DELETED" beforePath="$USER_HOME$/lecture07_nb-lda-perceptron/valli/training.txt" afterPath="" />
+      <change type="DELETED" beforePath="$USER_HOME$/lecture08_kernel-methods-part1/images/hand_writ_example.png" afterPath="" />
+      <change type="DELETED" beforePath="$USER_HOME$/lecture08_kernel-methods-part1/lecture08_final_kernel-methods-part1.ipynb" afterPath="" />
+      <change type="DELETED" beforePath="$USER_HOME$/lecture08_kernel-methods-part1/lecture08_final_kernel-methods-part1.pdf" afterPath="" />
+      <change type="DELETED" beforePath="$USER_HOME$/lecture08_kernel-methods-part1/saket/.ipynb_checkpoints/lecture08_saket_kernel-methods-part1-checkpoint.ipynb" afterPath="" />
+      <change type="DELETED" beforePath="$USER_HOME$/lecture08_kernel-methods-part1/saket/hand_writ_example.png" afterPath="" />
+      <change type="DELETED" beforePath="$USER_HOME$/lecture08_kernel-methods-part1/saket/krr_1.png" afterPath="" />
+      <change type="DELETED" beforePath="$USER_HOME$/lecture08_kernel-methods-part1/saket/krr_2.png" afterPath="" />
+      <change type="DELETED" beforePath="$USER_HOME$/lecture08_kernel-methods-part1/saket/krr_3.png" afterPath="" />
+      <change type="DELETED" beforePath="$USER_HOME$/lecture08_kernel-methods-part1/saket/lecture08_saket_kernel-methods-part1.ipynb" afterPath="" />
+      <change type="DELETED" beforePath="$USER_HOME$/lecture08_kernel-methods-part1/saket/linear_classifier.png" afterPath="" />
+      <change type="DELETED" beforePath="$USER_HOME$/lecture08_kernel-methods-part1/saket/linear_classifier_3d.png" afterPath="" />
+      <change type="DELETED" beforePath="$USER_HOME$/lecture08_kernel-methods-part1/saket/prml.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$USER_HOME$/lecture09_svm/images/SVM.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$USER_HOME$/lecture09_svm/images/krr_1.png" afterPath="" />
+      <change type="DELETED" beforePath="$USER_HOME$/lecture09_svm/images/krr_2.png" afterPath="" />
+      <change type="DELETED" beforePath="$USER_HOME$/lecture09_svm/images/krr_3.png" afterPath="" />
+      <change type="DELETED" beforePath="$USER_HOME$/lecture09_svm/lecture09_final_kernels-svm.ipynb" afterPath="" />
+      <change type="DELETED" beforePath="$USER_HOME$/lecture09_svm/valli_original/.ipynb_checkpoints/lecture09_valli_duality-svm-checkpoint.ipynb" afterPath="" />
+      <change type="DELETED" beforePath="$USER_HOME$/lecture09_svm/valli_original/SVM.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$USER_HOME$/lecture09_svm/valli_original/lecture09_valli_duality-svm.ipynb" afterPath="" />
+      <change type="DELETED" beforePath="$USER_HOME$/tutorials/Tutorial 4 - Optimization Review.ipynb" afterPath="" />
+      <change type="DELETED" beforePath="$USER_HOME$/tutorials/eecs545_python-tutorial_jan27.ipynb" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database.py" afterPath="$PROJECT_DIR$/database.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/formator.log" afterPath="$PROJECT_DIR$/formator.log" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/formator.py" afterPath="$PROJECT_DIR$/formator.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/locator.py" afterPath="$PROJECT_DIR$/locator.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests.py" afterPath="$PROJECT_DIR$/tests.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+    </list>
+    <ignored path="crab.iws" />
+    <ignored path=".idea/workspace.xml" />
+    <ignored path=".idea/dataSources.local.xml" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
+  <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/crab$connector.coverage" NAME="connector Coverage Results" MODIFIED="1457201135586" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/crab$tests.coverage" NAME="tests Coverage Results" MODIFIED="1457232965349" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/crab$providor.coverage" NAME="providor Coverage Results" MODIFIED="1455329807448" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+  </component>
+  <component name="CreatePatchCommitExecutor">
+    <option name="PATCH_PATH" value="" />
+  </component>
+  <component name="DatabaseView">
+    <option name="FLATTEN" value="false" />
+    <option name="GROUP_BY_TYPE" value="true" />
+    <option name="SORT_CHILDREN" value="false" />
+    <option name="SHOW_TABLE_CONSTRAINTS" value="true" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+  <component name="FavoritesManager">
+    <favorites_list name="crab" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file leaf-file-name="formator.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/formator.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="31" column="28" selection-start-line="31" selection-start-column="28" selection-end-line="31" selection-end-column="28" />
+              <folding>
+                <marker date="1457240783000" expanded="true" signature="501:551" placeholder="SELECT name ..sqlite_master..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="locator.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/locator.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.62068963">
+              <caret line="30" column="53" selection-start-line="30" selection-start-column="53" selection-end-line="30" selection-end-column="53" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="generator.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/generator.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="2" column="37" selection-start-line="2" selection-start-column="37" selection-end-line="2" selection-end-column="37" />
+              <folding>
+                <marker date="1457235639000" expanded="true" signature="377:399" placeholder="PRAGMA table..." />
+                <marker date="1457235639000" expanded="true" signature="565:589" placeholder="select * fro..URL..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$USER_HOME$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/format.py" />
+        <option value="$PROJECT_DIR$/providor.py" />
+        <option value="$PROJECT_DIR$/connector" />
+        <option value="$PROJECT_DIR$/generator.py" />
+        <option value="$PROJECT_DIR$/connector.py" />
+        <option value="$PROJECT_DIR$/database.py" />
+        <option value="$PROJECT_DIR$/tests.py" />
+        <option value="$PROJECT_DIR$/__init__.py" />
+        <option value="$PROJECT_DIR$/searchByCity.py" />
+        <option value="$PROJECT_DIR$/formator.py" />
+        <option value="$PROJECT_DIR$/locator.py" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+  </component>
+  <component name="NamedScopeManager">
+    <order />
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="width" value="1280" />
+    <option name="height" value="800" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <OptionsSetting value="true" id="Add" />
+    <OptionsSetting value="true" id="Remove" />
+    <OptionsSetting value="true" id="Checkout" />
+    <OptionsSetting value="true" id="Update" />
+    <OptionsSetting value="true" id="Status" />
+    <OptionsSetting value="true" id="Edit" />
+    <ConfirmationsSetting value="2" id="Add" />
+    <ConfirmationsSetting value="0" id="Remove" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+    </navigator>
+    <panes>
+      <pane id="Scope">
+        <subPane subId="Problems" />
+        <subPane subId="Project Files">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="crab">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT=".idea">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="crab" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scratches">
+        <subPane />
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="full.screen.before.presentation.mode" value="false" />
+    <property name="FullScreen" value="true" />
+    <property name="recentsLimit" value="5" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="111" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="113" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="116" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder2" value="2" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="910" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder3" value="3" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="111" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder0" value="0" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth1" value="113" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder1" value="1" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth2" value="116" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder2" value="2" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="910" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder3" value="3" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="settings.editor.splitter.proportion" value="0.2" />
+  </component>
+  <component name="PyConsoleOptionsProvider">
+    <option name="myPythonConsoleState">
+      <console-settings module-name="crab" is-module-sdk="true">
+        <option name="myUseModuleSdk" value="true" />
+        <option name="myModuleName" value="crab" />
+      </console-settings>
+    </option>
+  </component>
+  <component name="RunManager" selected="Python.tests">
+    <configuration default="false" name="tests" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="crab" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tests.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="providor" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="crab" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/providor.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="connector" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="crab" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/connector.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="DjangoTestsConfigurationType" factoryName="Django tests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="crab" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="TARGET" value="" />
+      <option name="SETTINGS_FILE" value="" />
+      <option name="CUSTOM_SETTINGS" value="false" />
+      <option name="USE_OPTIONS" value="false" />
+      <option name="OPTIONS" value="" />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+      <method />
+    </configuration>
+    <configuration default="true" type="PyBehaveRunConfigurationType" factoryName="Behave">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="crab" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="ADDITIONAL_ARGS" value="" />
+      <method />
+    </configuration>
+    <configuration default="true" type="PyLettuceRunConfigurationType" factoryName="Lettuce">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="crab" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="ADDITIONAL_ARGS" value="" />
+      <method />
+    </configuration>
+    <configuration default="true" type="PythonConfigurationType" factoryName="Python">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="crab" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <node-options />
+      <gulpfile />
+      <tasks />
+      <arguments />
+      <pass-parent-envs>true</pass-parent-envs>
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="Attests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="crab" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="Doctests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="crab" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="Nosetests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="crab" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="PARAMS" value="" />
+      <option name="USE_PARAM" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="Unittests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="crab" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="PUREUNITTEST" value="true" />
+      <option name="PARAMS" value="" />
+      <option name="USE_PARAM" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="py.test">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="crab" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="testToRun" value="" />
+      <option name="keywords" value="" />
+      <option name="params" value="" />
+      <option name="USE_PARAM" value="false" />
+      <option name="USE_KEYWORD" value="false" />
+      <method />
+    </configuration>
+    <list size="3">
+      <item index="0" class="java.lang.String" itemvalue="Python.tests" />
+      <item index="1" class="java.lang.String" itemvalue="Python.providor" />
+      <item index="2" class="java.lang.String" itemvalue="Python.connector" />
+    </list>
+    <recent_temporary>
+      <list size="3">
+        <item index="0" class="java.lang.String" itemvalue="Python.tests" />
+        <item index="1" class="java.lang.String" itemvalue="Python.connector" />
+        <item index="2" class="java.lang.String" itemvalue="Python.providor" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="f9d642fc-76d0-455d-a6f8-667e3794dc03" name="Default" comment="" />
+      <created>1455240521150</created>
+      <option name="number" value="Default" />
+      <updated>1455240521150</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="0" y="0" width="1280" height="800" extended-state="0" />
+    <editor active="false" />
+    <layout>
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3296875" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.34794158" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3294509" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32802126" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+    </layout>
+  </component>
+  <component name="Vcs.Log.UiProperties">
+    <option name="RECENTLY_FILTERED_USER_GROUPS">
+      <collection />
+    </option>
+    <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+      <collection />
+    </option>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <option name="time" value="3" />
+    </breakpoint-manager>
+    <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/tests.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/locator.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="15" column="49" selection-start-line="15" selection-start-column="40" selection-end-line="15" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/formator.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="24" column="30" selection-start-line="24" selection-start-column="30" selection-end-line="24" selection-end-column="30" />
+          <folding>
+            <marker date="1457240783000" expanded="true" signature="501:551" placeholder="SELECT name ..sqlite_master..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.13089006">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/vcs.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/modules.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/misc.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/crab.iml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/.name">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/formator.log">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="45" column="25" selection-start-line="45" selection-start-column="25" selection-end-line="45" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/providor.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/connector.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.12552302">
+          <caret line="4" column="11" selection-start-line="4" selection-start-column="11" selection-end-line="4" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.06276151">
+          <caret line="2" column="10" selection-start-line="2" selection-start-column="10" selection-end-line="2" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.21966527">
+          <caret line="7" column="16" selection-start-line="7" selection-start-column="16" selection-end-line="7" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/locator.log">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/generator.log">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/formator.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="31" column="28" selection-start-line="31" selection-start-column="28" selection-end-line="31" selection-end-column="28" />
+          <folding>
+            <marker date="1457240783000" expanded="true" signature="501:551" placeholder="SELECT name ..sqlite_master..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/generator.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="2" column="37" selection-start-line="2" selection-start-column="37" selection-end-line="2" selection-end-column="37" />
+          <folding>
+            <marker date="1457235639000" expanded="true" signature="377:399" placeholder="PRAGMA table..." />
+            <marker date="1457235639000" expanded="true" signature="565:589" placeholder="select * fro..URL..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/locator.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.62068963">
+          <caret line="30" column="53" selection-start-line="30" selection-start-column="53" selection-end-line="30" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

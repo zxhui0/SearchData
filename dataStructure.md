@@ -1,19 +1,17 @@
 ## house information
-* [luId]
-* [id]: ![pk][pk]
-* [RecordDateTime]
-* priceAndTips
-  * displayPrice
-  * promotionWeek
-  * promotionMonth
-  * isTejia
+* [luId]![pk][pk]int
+* priceAndTips [in another table]
+  * displayPrice:int
+  * promotionWeek:real
+  * promotionMonth:real
+  * isTejia:bool
 * luBase
   * lodgeUnitName
-  * yanzhen
-  * shipai
-  * isFlashBook
-  * isNew
-  * online
+  * yanzhen:bool
+  * shipai:bool
+  * isFlashBook:bool
+  * isNew:bool
+  * online:bool
 * landlord
   * landlordPersonRole
   * landlordName
@@ -27,20 +25,20 @@
   * leaseType
   * area
   * houseType
-  * guestNum
+  * guestNum:int
   * liveTips
   * displayAddress
-  * latitude
-  * longitude
+  * latitude:real
+  * longitude:real
   * roomInnerIntro
   * serviceIntro
   * trafficIntro
   * toilet
   * foreigner
-  * maxDays
-  * minDays
-  * addPriceDesc
-  * cashplege
+  * maxDays:int
+  * minDays:int
+  * addPriceDesc:?
+  * cashPlege:real
   * cashPledgeOnline
   * cashPledgeFree
   * aroundVillageIntro
@@ -49,61 +47,60 @@
   * addTenantTips
 * bed
   * bedInfo
-  * bedNum
+  * bedNum:int
   * bedNumTip
 * facility
-  * wirelessnetwork
-  * shower
-  * tv
-  * aircondition
-  * heater
-  * smoke
-  * drinking
-  * slippers
-  * toiletpaper
-  * towel
-  * toiletries
-  * icebox
-  * washer
-  * elevator
-  * iscook
-  * accesssys
-  * parkingspace
-  * wirednetwork
-  * brush
-  * soap
-  * hotbathtub
-  * pet
-  * meet
+  * wirelessnetwork:bool
+  * shower:bool
+  * tv:bool
+  * aircondition:bool
+  * heater:bool
+  * smoke:bool
+  * drinking:bool
+  * slippers:bool
+  * toiletpaper:bool
+  * towel:bool
+  * toiletries:bool
+  * icebox:bool
+  * washer:bool
+  * elevator:bool
+  * iscook:bool
+  * accesssys:bool
+  * parkingspace:bool
+  * wirednetwork:bool
+  * brush:bool
+  * soap:bool
+  * hotbathtub:bool
+  * pet:bool
+  * meet:bool
 * landlordDemand
   * useRule
   * unReceiveSex
   * unReceiveAge
 * dealRule
-  * cancelPayAllDay
-  * prepayRate
-  * cancelPunishDay
+  * cancelPayAllDay:int
+  * prepayRate:int
+  * cancelPunishDay:int
 * cityInfo
-  * city_id
+  * city_id:int
 
 ## landlord information
 
-* [id] : ![pk][pk]
-* [RecordDateTime]
+* [landlordId]![pk][pk]
 * lodgeUnit
   * a list of
     * luId
 * landlordName
-* onlineReplyRate
-* avgConfrimMinutes
-* confirmRate
-* landlordPersonRole
-* onlineRooms
-* bookTotalCount
-* realIdentity
-* realHeadImage
-* mobileChecked
-* emailChecked
+* onlineReplyRate:real
+* avgConfrimMinutes:real
+* confirmRate:real
+* landlordPersonRole:bool
+* onlineRooms:int
+* bookTotalCount:int
+* realIdentity:bool
+* realHeadImage:bool
+* mobileChecked:bool
+* emailChecked:bool
 * landlordInfo
   * sex
   * ageGroup
@@ -113,20 +110,26 @@
   * profession
   * cityName
   * hometown
-  * zhimaScore
+  * zhimaScore:real
 
 ## Search
 * a list of:
   * [id]:![pk][pk]
   * luId:
-  * luTitle
-  * luLeaseType
-  * displayAddr
-  * luPrice
-  * [listingOrder]
-  * [CityID]
-  * [SearchDateTime]
+  * [listOrder]
+  * [SearchTime]
 
+## Calendar
+* a list of:
+  * [id] ![pk][pk]:int
+  * [luId]:int
+  * [SearchDateTime]:datetime
+  * price:real
+  * day:date
+  * userSetBookable:bool
+  * isCanBook:bool
+  * priceType
+  * roomNum:int
 
 [pk]:  http://www.functionx.com/access/buttons/primarykey2.gif
 [fk]: http://powerbuilder.hyderabad-colleges.com/images/6/foreign-key-icon.gif
