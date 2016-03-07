@@ -10,14 +10,18 @@ CityId = [12,13,76,16,45,17,176,65,26,15,194,67,66,114,144,56,93,225,344,55,103]
 
 assert len(City) == len(CityId)
 
-##gai
-def urlProvidor(landlordId):
+
+def urlProvidor(luId):
     timestamp =  time.mktime(time.localtime())*1000
-    url = 'http://wireless.xiaozhu.com/app/xzfk/html5/201/Fangdong/index?' \
-          'jsonp=fangdongindex_callback&landlordId={}&offset=0&' \
-          'length=5&onlyLodgeunit=false&userId=0&sessId=0&' \
-          'jsonp=fangdongindex_callback&timestamp={}&_={}'.format(
-        landlordId,timestamp,timestamp+200
+    today=datetime.datetime.now().strftime("%Y-%m-%d")
+    endDate= (datetime.datetime.now()+datetime.timedelta(120,0)).strftime("%Y-%m-%d")
+
+
+    url = 'http://wireless.xiaozhu.com/app/xzfk/html5/201/detail/Cal?jsonp=' \
+        'detail_cal_callback&luId={}&startDate={}&endDate={}&' \
+        'userId=0&sessId=0&jsonp=detail_cal_callback&' \
+        'timestamp={}&_={}'.format(
+        luId,today,endDate,timestamp,timestamp+200
     )
     return url
 
@@ -33,35 +37,36 @@ null = ''
 #fetch unique landlordId from DB
 query = {}
 query['houseInfo']={
-    'landlordId' : 'group by',
+    'luId' : 'group by',
 }
 cols, rows = crab.database.db(query,'select')
 #end fetch unique landlordId from DB
-#fetch exist landlordId from DB
-query = {}
-query['landlordInfo']={
-    'landlordId' : 'group by',
-}
-existCols, existRows = crab.database.db(query,'select')
-#end fetch exist landlordId from Db
+# #fetch exist landlordId from DB
+# query = {}
+# query['landlordInfo']={
+#     'luId' : 'group by',
+# }
+# existCols, existRows = crab.database.db(query,'select')
+# #end fetch exist landlordId from Db
 
-landlordIds = [i[cols.index('landlordId')] for i in rows]
-existLandlordIds = [i[existCols.index('landlordId')] for i in existRows]
-newLandlordIds = [i for i in landlordIds if not i in existLandlordIds]
+luIds = [i[cols.index('luId')] for i in rows]
 
-print 'searching %d new landlordIds for landlordInfo'%len(newLandlordIds)
+# existLandlordIds = [i[existCols.index('landlordId')] for i in existRows]
+# newLandlordIds = [i for i in landlordIds if not i in existLandlordIds]
 
-for landlordId in np.random.permutation(newLandlordIds):
+print 'searching %d luIds for priceCalendar'%len(luIds)
+
+for luId in np.random.permutation(luIds):
     try:
         format = crab.formator.formator('"content":{.+}\)')
-        rawData = crab.locator.locator(urlProvidor(landlordId),format)
+        rawData = crab.locator.locator(urlProvidor(luId),format)
 
         if len(rawData) == 1:
             rawData = rawData[0]
             content = rawData[10:-2]
             content = eval(content)
         else:
-            print 'passed landlordId : %d'%landlordId
+            print 'passed luId : %d'%luId
             continue
         keys = ['landlordId','landlordName','landlordPersonRole','zhimaScore','mobileChecked','emailChecked',
                 'realIdentity','realHeadImage','onlineReplyRate','avgConfirmMinutes','confirmRate','onlineRooms',
