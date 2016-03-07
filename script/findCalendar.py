@@ -84,6 +84,7 @@ for luId in np.random.permutation(luIds):
                     elif (key in keys) and (not isinstance(value,list)):
                         json[key] = value
             json['luId'] = luId
+            json['Day']=item['day']
             json['searchTime'] = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
             change = {
