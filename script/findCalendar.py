@@ -58,7 +58,7 @@ print 'searching %d luIds for priceCalendar'%len(luIds)
 
 for luId in np.random.permutation(luIds):
     try:
-        format = crab.formator.formator('"content":{.+}\)')
+        format = crab.formator.formator('"content":\[{.+\]}\)')
         rawData = crab.locator.locator(urlProvidor(luId),format)
 
         if len(rawData) == 1:
@@ -68,43 +68,39 @@ for luId in np.random.permutation(luIds):
         else:
             print 'passed luId : %d'%luId
             continue
-        keys = ['landlordId','landlordName','landlordPersonRole','zhimaScore','mobileChecked','emailChecked',
-                'realIdentity','realHeadImage','onlineReplyRate','avgConfirmMinutes','confirmRate','onlineRooms',
-                'bookTotalCount','sex','ageGroup','zodiac','bloodType','education','profession','cityName',
-                'hometown']
-        json = {}
-        if isinstance(content, dict):
-            for key,value in content.iteritems():
-                if isinstance(value,dict):
-                    for valuekey,valuevalue in value.iteritems():
-                        if valuekey in keys:
-                            if not isinstance(valuevalue,list):
-                                json[valuekey]=valuevalue
-                            else:
-                                json[valuekey]=','.join(valuevalue)
-                elif (key in keys) and (not isinstance(value,list)):
-                    json[key] = value
-        json['landlordId'] = landlordId
-        json['searchTime'] = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-        try:
-            json['avgConfirmMinutes'] = content['avgConfrimMinutes']
-        except:
-            pass
-        change = {
-            'landlordInfo' : json,
-        }
-        crab.database.db(change,'insert')
+        for item in content:
+
+            keys = ['luId','searchTime','Day','price','userSetBookable','isCanBook','priceType','roomNum']
+            json = {}
+            if isinstance(item, dict):
+                for key,value in item.iteritems():
+                    if isinstance(value,dict):
+                        for valuekey,valuevalue in value.iteritems():
+                            if valuekey in keys:
+                                if not isinstance(valuevalue,list):
+                                    json[valuekey]=valuevalue
+                                else:
+                                    json[valuekey]=','.join(valuevalue)
+                    elif (key in keys) and (not isinstance(value,list)):
+                        json[key] = value
+            json['luId'] = luId
+            json['searchTime'] = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+
+            change = {
+                'priceCalendar' : json,
+            }
+            crab.database.db(change,'insert')
     except KeyboardInterrupt:
         exit()
     except:
         try:
             errorHandler = {}
             errorHandler['url'] = urlProvidor(landlordId)
-            errorHandler['description'] = 'failed insert landlordInfo data of luId : %d'%landlordId
+            errorHandler['description'] = 'failed insert priceCalendar data of luId : %d'%luId
             errorHandler['errorTime'] = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
             crab.database.db({'errorHandler':errorHandler},'insert')
         except:
-            print 'passed landlordId %d with no DB errorHandler record'%landlordId
+            print 'passed luId %d with no DB errorHandler record'%luId
 # except Exception as inst:
 #     errorHandler = {}
 #     errorHandler['url'] = urlProvidor(city,minprice,minprice+dprice)
