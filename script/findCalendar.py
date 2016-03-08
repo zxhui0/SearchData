@@ -87,10 +87,12 @@ for luId in np.random.permutation(luIds):
             json['Day']=item['day']
             json['searchTime'] = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
-            change = {
-                'priceCalendar' : json,
-            }
-            crab.database.db(change,'insert')
+            if json['isCanBook'] == False:
+                change = {
+                    'priceCalendar' : json,
+                }
+                crab.database.db(change,'insert')
+            
     except KeyboardInterrupt:
         exit()
     except:
@@ -115,5 +117,3 @@ for luId in np.random.permutation(luIds):
 
 if __name__ == 'main':
     pass
-
-
