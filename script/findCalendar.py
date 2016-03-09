@@ -61,7 +61,7 @@ json['timestamp'] = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 json['activity'] = 'searchCalendar'
 json['status'] = 'starting'
 try:
-    crab.database.db({'activityRecord':json})
+    crab.database.db({'activityRecord':json},'insert')
 except:
     pass
 
@@ -120,7 +120,7 @@ json['timestamp'] = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 json['activity'] = 'searchCalendar'
 json['status'] = 'finished'
 try:
-    crab.database.db({'activityRecord':json})
+    crab.database.db({'activityRecord':json},'insert')
 except:
     pass
 
