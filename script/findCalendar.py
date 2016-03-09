@@ -54,7 +54,16 @@ luIds = [i[cols.index('luId')] for i in rows]
 # existLandlordIds = [i[existCols.index('landlordId')] for i in existRows]
 # newLandlordIds = [i for i in landlordIds if not i in existLandlordIds]
 
+
 print 'searching %d luIds for priceCalendar'%len(luIds)
+json={}
+json['timestamp'] = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+json['activity'] = 'searchCalendar'
+json['status'] = 'starting'
+try:
+    crab.database.db({'activityRecord':json})
+except:
+    pass
 
 for luId in np.random.permutation(luIds):
     try:
@@ -92,7 +101,7 @@ for luId in np.random.permutation(luIds):
                     'priceCalendar' : json,
                 }
                 crab.database.db(change,'insert')
-            
+
     except KeyboardInterrupt:
         exit()
     except:
@@ -104,6 +113,17 @@ for luId in np.random.permutation(luIds):
             crab.database.db({'errorHandler':errorHandler},'insert')
         except:
             print 'passed luId %d with no DB errorHandler record'%luId
+
+
+json={}
+json['timestamp'] = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+json['activity'] = 'searchCalendar'
+json['status'] = 'finished'
+try:
+    crab.database.db({'activityRecord':json})
+except:
+    pass
+
 # except Exception as inst:
 #     errorHandler = {}
 #     errorHandler['url'] = urlProvidor(city,minprice,minprice+dprice)
