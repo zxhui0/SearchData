@@ -14,7 +14,7 @@ assert len(City) == len(CityId)
 def urlProvidor(luId):
     timestamp =  time.mktime(time.localtime())*1000
     today=datetime.datetime.now().strftime("%Y-%m-%d")
-    endDate= (datetime.datetime.now()+datetime.timedelta(120,0)).strftime("%Y-%m-%d")
+    endDate= (datetime.datetime.now()+datetime.timedelta(60,0)).strftime("%Y-%m-%d")
 
 
     url = 'http://wireless.xiaozhu.com/app/xzfk/html5/201/detail/Cal?jsonp=' \
