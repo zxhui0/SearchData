@@ -73,7 +73,14 @@ for name , city in enumerate(CityId):
         except:
             pass
 
-
+json={}
+json['timestamp'] = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+json['activity'] = 'searchOrder'
+json['status'] = 'ending'
+try:
+    crab.database.db({'activityRecord':json},'insert')
+except:
+    pass
 
 
 
