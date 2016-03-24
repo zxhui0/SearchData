@@ -1,5 +1,5 @@
 import crab
-import time
+import time,Queue,threading
 import datetime
 import numpy as np
 
@@ -21,12 +21,85 @@ def urlProvidor(luId):
         'detail_cal_callback&luId={}&startDate={}&endDate={}&' \
         'userId=0&sessId=0&jsonp=detail_cal_callback&' \
         'timestamp={}&_={}'.format(
-        luId,today,endDate,timestamp,timestamp+200
+        luId,today,endDate,'%d'%timestamp,'%d'%(timestamp+200)
     )
     return url
 
 
 
+queueLock = threading.Lock()
+
+class getluIdThreading(threading.Thread):
+    def __init__(self,threadId,threadName,q):
+        threading.Thread.__init__(self)
+        self.threadId = threadId
+        self.threadName = threadName
+        self.q = q
+    def run(self):
+        while not exitFlag:
+            queueLock.acquire()
+            if not self.q.empty():
+                luId = self.q.get()
+                time.sleep(2)
+                queueLock.release()
+                print 'thread:{} fetching luId:{}'.format(
+                self.threadName,luId
+                )
+                getLuId(luId)
+            else:
+                print 'thread:{} sleeping'.format(
+                self.threadName
+                )
+                queueLock.release()
+            time.sleep(0.01)
+
+def getLuId(luId):
+    # try:
+    formator = crab.formator.formator('"content":\[{.+\]}\)')
+    rawData = crab.locator.locator(urlProvidor(luId),formator)
+    if len(rawData) == 1:
+        rawData = rawData[0]
+        content = rawData[10:-2]
+        content = eval(content)
+    else:
+        print 'passed luId : %d'%luId
+        return
+
+    for item in content:
+
+        keys = ['luId','searchTime','Day','price','userSetBookable','isCanBook','priceType','roomNum']
+        json = {}
+        if isinstance(item, dict):
+            for key,value in item.iteritems():
+                if isinstance(value,dict):
+                    for valuekey,valuevalue in value.iteritems():
+                        if valuekey in keys:
+                            if not isinstance(valuevalue,list):
+                                json[valuekey]=valuevalue
+                            else:
+                                json[valuekey]=','.join(valuevalue)
+                elif (key in keys) and (not isinstance(value,list)):
+                    json[key] = value
+        json['luId'] = luId
+        json['Day']=item['day']
+        json['searchTime'] = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        if json['isCanBook'] == False:
+            change = {
+                'priceCalendar' : json,
+            }
+            crab.database.db(change,'insert')
+
+    # except KeyboardInterrupt:
+    #     exit()
+    # except:
+    #     try:
+    #         errorHandler = {}
+    #         errorHandler['url'] = urlProvidor(landlordId)
+    #         errorHandler['description'] = 'failed insert priceCalendar data of luId : %d'%luId
+    #         errorHandler['errorTime'] = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    #         crab.database.db({'errorHandler':errorHandler},'insert')
+    #     except:
+    #         print 'passed luId %d with no DB errorHandler record'%luId
 
 # for string issues
 true = True
@@ -64,56 +137,32 @@ try:
     crab.database.db({'activityRecord':json},'insert')
 except:
     pass
+# threading in order to get information for each luId
+exitFlag = 0
+threadList = ['No. %d'%i for i in range(3)]
+threads=[]
+luIdQueue = Queue.Queue(10000)
+for name in threadList:
+    thread = getluIdThreading(
+    threadList.index(name),
+    name,
+    luIdQueue)
+    thread.start()
+    threads.append(thread)
 
-for luId in np.random.permutation(luIds):
-    try:
-        format = crab.formator.formator('"content":\[{.+\]}\)')
-        rawData = crab.locator.locator(urlProvidor(luId),format)
+queueLock.acquire()
+for luId in np.random.permutation(luIds[:40]):
+    luIdQueue.put(luId)
+queueLock.release()
 
-        if len(rawData) == 1:
-            rawData = rawData[0]
-            content = rawData[10:-2]
-            content = eval(content)
-        else:
-            print 'passed luId : %d'%luId
-            continue
-        for item in content:
 
-            keys = ['luId','searchTime','Day','price','userSetBookable','isCanBook','priceType','roomNum']
-            json = {}
-            if isinstance(item, dict):
-                for key,value in item.iteritems():
-                    if isinstance(value,dict):
-                        for valuekey,valuevalue in value.iteritems():
-                            if valuekey in keys:
-                                if not isinstance(valuevalue,list):
-                                    json[valuekey]=valuevalue
-                                else:
-                                    json[valuekey]=','.join(valuevalue)
-                    elif (key in keys) and (not isinstance(value,list)):
-                        json[key] = value
-            json['luId'] = luId
-            json['Day']=item['day']
-            json['searchTime'] = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+while not luIdQueue.empty():
+    pass
 
-            if json['isCanBook'] == False:
-                change = {
-                    'priceCalendar' : json,
-                }
-                crab.database.db(change,'insert')
+exitFlag = 1
 
-    except KeyboardInterrupt:
-        exit()
-    except:
-        try:
-            errorHandler = {}
-            errorHandler['url'] = urlProvidor(landlordId)
-            errorHandler['description'] = 'failed insert priceCalendar data of luId : %d'%luId
-            errorHandler['errorTime'] = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-            crab.database.db({'errorHandler':errorHandler},'insert')
-        except:
-            print 'passed luId %d with no DB errorHandler record'%luId
-
+for t in threads:
+    t.join()
 
 json={}
 json['timestamp'] = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
@@ -130,7 +179,6 @@ except:
 #     errorHandler['description'] = inst.message
 #     errorHandler['errorTime'] = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 #     print 'error result in price : %d - %d '%(minprice,minprice+dprice)
-
 
 
 
