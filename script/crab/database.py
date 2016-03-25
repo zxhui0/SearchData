@@ -12,17 +12,29 @@ logger.addHandler(fh)
 logger.addHandler(ch)
 logger.handlers
 # conn = sqlite3.connect('crab.db') # local sqlite DB for dev
-conn = connector.connector.connect(
-    host = connector.HOST,
-    user = connector.USER,
-    password = connector.PASSWORD,
-    database = connector.DB_NAME
-)
 
-c = conn.cursor()
+dbconfig={
+"host":connector.HOST,
+"user":connector.USER,
+"password":connector.PASSWORD,
+"database":connector.DB_NAME,
+}
+cnp = connector.connector.pooling.MySQLConnectionPool(
+                    pool_name=None,
+                    pool_size=20,
+                    pool_reset_session=True,
+                    **dbconfig)
+
+# conn = connector.connector.connect(
+#     host = connector.HOST,
+#     user = connector.USER,
+#     password = connector.PASSWORD,
+#     database = connector.DB_NAME
+# )
 
 def db(change,method):
-
+    conn = cnp.get_connection()
+    c = conn.cursor()
 
     if(isinstance(method,basestring) & isinstance(change,dict)):
         logging.info('Correct input data kind for function db, using method %s'%method)
@@ -43,6 +55,7 @@ def db(change,method):
                         sqlquery = method.upper() + " INTO %s (%s) VALUES (%s)"%_sqlsafe(
                             (table,','.join(colsNames),','.join(colsValue))
                         )
+                        time.sleep(0.001)
                     else:
                         colsNames = [_preprocessString(i) for i in col_dict.keys()]
                         colsValue = [_preprocessString(i) for i in col_dict.values()]
@@ -106,6 +119,7 @@ def db(change,method):
     else:
         logger.error('Incorrect input data kind for function db, using method %s'%method)
         raise ValueError
+    conn.close()
 
 
 
@@ -132,4 +146,3 @@ def _preprocessString(x):
         raise TypeError
     else:
         return "%s"%x
-

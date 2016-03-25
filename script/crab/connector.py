@@ -1,4 +1,5 @@
 import mysql.connector
+import mysql.connector.pooling
 HOST = 'xiaozhu.cnm6xr4d9ffx.us-west-2.rds.amazonaws.com'
 USER = 'admin'
 PASSWORD = 'adminmaster'

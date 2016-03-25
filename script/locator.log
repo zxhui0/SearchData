@@ -1,1 +1,4 @@
 2016-03-06 00:30:13,556 - locator - ERROR - Illegal data type for locator
+2016-03-24 21:11:30,719 - locator - ERROR - URLError happened on url: http://wireless.xiaozhu.com/app/xzfk/html5/201/detail/Cal?jsonp=detail_cal_callback&luId=11606900&startDate=2016-03-24&endDate=2016-05-23&userId=0&sessId=0&jsonp=detail_cal_callback&timestamp=1458868289000&_=1458868289200
+2016-03-24 21:11:30,721 - locator - ERROR - URLError happened on url: http://wireless.xiaozhu.com/app/xzfk/html5/201/detail/Cal?jsonp=detail_cal_callback&luId=13253241&startDate=2016-03-24&endDate=2016-05-23&userId=0&sessId=0&jsonp=detail_cal_callback&timestamp=1458868289000&_=1458868289200
+2016-03-24 21:11:30,721 - locator - ERROR - URLError happened on url: http://wireless.xiaozhu.com/app/xzfk/html5/201/detail/Cal?jsonp=detail_cal_callback&luId=13215551&startDate=2016-03-24&endDate=2016-05-23&userId=0&sessId=0&jsonp=detail_cal_callback&timestamp=1458868289000&_=1458868289200

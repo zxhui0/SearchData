@@ -28,7 +28,7 @@ def urlProvidor(luId):
 
 
 queueLock = threading.Lock()
-
+exitFlag=0
 class getluIdThreading(threading.Thread):
     def __init__(self,threadId,threadName,q):
         threading.Thread.__init__(self)
@@ -40,18 +40,18 @@ class getluIdThreading(threading.Thread):
             queueLock.acquire()
             if not self.q.empty():
                 luId = self.q.get()
-                time.sleep(2)
+                time.sleep(0+0.3*np.random.rand())
                 queueLock.release()
-                print 'thread:{} fetching luId:{}'.format(
+                # print 'thread:{} fetching luId:{}'.format(
                 self.threadName,luId
                 )
                 getLuId(luId)
             else:
-                print 'thread:{} sleeping'.format(
+                # print 'thread:{} sleeping'.format(
                 self.threadName
                 )
                 queueLock.release()
-            time.sleep(0.01)
+            time.sleep(0.1)
 
 def getLuId(luId):
     # try:
@@ -139,7 +139,7 @@ except:
     pass
 # threading in order to get information for each luId
 exitFlag = 0
-threadList = ['No. %d'%i for i in range(3)]
+threadList = ['No. %d'%i for i in range(12)]
 threads=[]
 luIdQueue = Queue.Queue(10000)
 for name in threadList:
@@ -151,7 +151,7 @@ for name in threadList:
     threads.append(thread)
 
 queueLock.acquire()
-for luId in np.random.permutation(luIds[:40]):
+for luId in np.random.permutation(luIds[:80]):
     luIdQueue.put(luId)
 queueLock.release()
 
@@ -160,6 +160,7 @@ while not luIdQueue.empty():
     pass
 
 exitFlag = 1
+print 'Empty queue'
 
 for t in threads:
     t.join()
