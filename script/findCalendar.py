@@ -40,16 +40,18 @@ class getluIdThreading(threading.Thread):
             queueLock.acquire()
             if not self.q.empty():
                 luId = self.q.get()
-                time.sleep(0+0.3*np.random.rand())
+                time.sleep(0+np.random.rand())
                 queueLock.release()
-                # print 'thread:{} fetching luId:{}'.format(
+                print 'thread:{} fetching luId:{}'.format(
                 self.threadName,luId
                 )
+                time.sleep(0.1)
                 getLuId(luId)
             else:
-                # print 'thread:{} sleeping'.format(
+                print 'thread:{} sleeping'.format(
                 self.threadName
                 )
+                time.sleep(0.1)
                 queueLock.release()
             time.sleep(0.1)
 
@@ -151,7 +153,7 @@ for name in threadList:
     threads.append(thread)
 
 queueLock.acquire()
-for luId in np.random.permutation(luIds[:80]):
+for luId in np.random.permutation(luIds):
     luIdQueue.put(luId)
 queueLock.release()
 
