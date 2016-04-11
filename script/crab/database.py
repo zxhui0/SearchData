@@ -55,7 +55,6 @@ def db(change,method):
                         sqlquery = method.upper() + " INTO %s (%s) VALUES (%s)"%_sqlsafe(
                             (table,','.join(colsNames),','.join(colsValue))
                         )
-                        time.sleep(0.001)
                     else:
                         colsNames = [_preprocessString(i) for i in col_dict.keys()]
                         colsValue = [_preprocessString(i) for i in col_dict.values()]
@@ -64,10 +63,14 @@ def db(change,method):
                         )
                     try:
                         c.execute(sqlquery)
+                        if sqlquery != c.statement:
+                            raise ValueError
+                        # logger.warning('Last id:{}'.format(c.lastrowid))
                         conn.commit()
                         time.sleep(0.001)
-                        logger.info('Successful query : %s'%sqlquery)
-                    except:
+                        # logger.info('Successful query : %s'%sqlquery)
+                    except Exception as e:
+                        logger.error('Exception : %s '%(e.message))
                         logger.error('Failed query : %s '%(sqlquery))
                 else:
                     logger.error('Incorrect input data kind for function db, using method %s'%(method))

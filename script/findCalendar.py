@@ -111,7 +111,7 @@ null = ''
 
 #fetch unique landlordId from DB
 query = {}
-query['houseInfo']={
+query['luId']={
     'luId' : 'group by',
 }
 cols, rows = crab.database.db(query,'select')

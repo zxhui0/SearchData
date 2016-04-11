@@ -8,7 +8,8 @@ City = ['Beijing','Shanghai','Xiamen','Guangzhou','Chengdu','Shenzhen','Xian','N
         'Chongqing','Wuhan','Suzhou','Wuxi','Qingdao','Sanya','Dalian','Haerbin','Kunming','Xianggang',
         'Shenyang','Zhengzhou']
 CityId = [12,13,76,16,45,17,176,65,26,15,194,67,66,114,144,56,93,225,344,55,103]
-
+City=['Sanya']
+CityId = [144]
 assert len(City) == len(CityId)
 
 def urlProvidor(cityid,minprice,maxprice):
@@ -16,7 +17,6 @@ def urlProvidor(cityid,minprice,maxprice):
     url = 'http://wireless.xiaozhu.com/app/xzfk/html5/201/search/result?' \
           'jsonp=api_search_result&cityId={}&offset=0&length=10000&orderBy=recommend' \
           '&checkInDay=&checkOutDay=&leaseType=&minPrice={}&maxPrice={}&distId=&locId=' \
-          '&keyword=&huXing=&facilitys=&guestNum=&cashPledgeFree=0&userId=0&sessId=0' \
           '&jsonp=api_search_result&timestamp={}&_={}'.format(
         cityid,minprice,maxprice,timestamp,timestamp+200
     )
@@ -32,19 +32,23 @@ format = crab.formator.formator('"item":\[.+\]')
 for city in np.random.permutation(CityId):
 
     print 'fetching:'+City[CityId.index(city)]
-    dprice = 3
-    for minprice in range(1,1000,dprice+1):
+    dprice = 50
+    for minprice in range(0,1000,dprice+1):
         try:
             rawData = crab.locator.locator(urlProvidor(city,minprice,minprice+dprice),format)
 
-            print 'searching price : %d - %d '%(minprice,minprice+dprice)
 
             if len(rawData) == 1:
+
                 rawData = rawData[0]
                 content = rawData[7:]
                 content = eval(content)
+                print 'searching price : %d - %d, %d luId returned'%(minprice,minprice+dprice,len(content))
+                if(len(content)>290):
+                    print 'Missing luId due to search limit'
+                    continue
             else:
-                print 'empty result in price : %d - %d '%(minprice,minprice+dprice)
+                # print 'empty result in price : %d - %d '%(minprice,minprice+dprice)
                 continue
 
 
