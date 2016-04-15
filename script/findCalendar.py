@@ -192,13 +192,12 @@ if __name__ == '__main__':
     exitFlag = 0
     luIdQueue = Queue.Queue(12000)
 
-    threadList = ['No. %d'%i for i in range(1)]
+    threadList = ['No. %d'%i for i in range(10)]
     threads=[]
 
 
     queueLock.acquire()
-    luIdQueue.put(1716586435)
-    for luId in np.random.permutation(luIds)[:0]:
+    for luId in np.random.permutation(luIds):
         luIdQueue.put(luId)
 
     for name in threadList:

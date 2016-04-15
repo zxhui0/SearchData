@@ -21,7 +21,7 @@ dbconfig={
 }
 cnp = connector.connector.pooling.MySQLConnectionPool(
                     pool_name=None,
-                    pool_size=1,
+                    pool_size=14,
                     pool_reset_session=True,
                     **dbconfig)
 
@@ -63,7 +63,6 @@ def db(change,method):
                         )
                     try:
                         c.execute(sqlquery)
-                        print sqlquery
                         # if sqlquery != c.statement:
                         #     raise ValueError
                         # logger.warning('Last id:{}'.format(c.lastrowid))
@@ -108,7 +107,6 @@ def db(change,method):
                                         break
                             try:
                                 c.execute(sqlquery)
-                                print sqlquery
                                 logger.info('Successful query : %s'%sqlquery)
                                 value=[i for i in c]
                                 c.close()
