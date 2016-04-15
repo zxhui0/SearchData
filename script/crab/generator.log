@@ -1,2 +1,0 @@
-03/05/2016 10:39:32 PM Correct input data kind for function db, using method insert
-03/05/2016 10:39:32 PM Failed query : INSERT INTO page ('num') VALUES ('20')

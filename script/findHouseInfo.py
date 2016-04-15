@@ -13,11 +13,8 @@ assert len(City) == len(CityId)
 def urlProvidor(luId):
     timestamp =  time.mktime(time.localtime())*1000
     url = 'http://wireless.xiaozhu.com/app/xzfk/html5/201/detail/index?' \
-          'jsonp=detailindex_callback&luId={}&startDate=' \
-          '&endDate=&userId=0&sessId=0&jsonp=detailindex_callback' \
-          '&timestamp={}&_={}'.format(
-        luId,timestamp,timestamp+200
-    )
+          'jsonp=detailindex_callback&luId=%d&startDate=' \
+          '&endDate=&userId=0&sessId=0&jsonp=detailindex_callback'%luId
     return url
 
 
@@ -31,10 +28,19 @@ null = ''
 query = {}
 query['luId']={
     'luId':'group by',
-    'cityId': 'where (cityId = 12 or cityId = 13 or cityId = 144)',
+    # 'cityId': 'where (cityId = 12 or cityId = 13 or cityId = 144)',
+}
+query_old = {}
+query_old['houseInfo']={
+    'luId':'group by',
+    # 'cityId': 'where (cityId = 12 or cityId = 13 or cityId = 144)',
 }
 cols, rows = crab.database.db(query,'select')
+cols_old, rows_old = crab.database.db(query_old,'select')
+if cols == cols_old:
+    rows = [i for i in rows if i not in rows_old]
 #end fetch unique luId from DB
+print 'updating %d new houseInfo'%len(rows)
 
 for row in rows:
     try:
@@ -78,6 +84,7 @@ for row in rows:
         change = {
             'houseInfo' : json,
         }
+
         crab.database.db(change,'insert')
 
         json = {}
@@ -96,7 +103,7 @@ for row in rows:
         try:
             errorHandler = {}
             errorHandler['url'] = urlProvidor(luId)
-            errorHandler['description'] = 'failed insert houseInfo data of luId : %d'%luId
+            errorHandler['description'] = 'houseInfo'
             errorHandler['errorTime'] = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
             crab.database.db({'errorHandler':errorHandler},'insert')
         except:
@@ -114,5 +121,3 @@ for row in rows:
 
 if __name__ == 'main':
     pass
-
-

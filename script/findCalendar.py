@@ -18,17 +18,15 @@ def urlProvidor(luId):
 
 
     url = 'http://wireless.xiaozhu.com/app/xzfk/html5/201/detail/Cal?jsonp=' \
-        'detail_cal_callback&luId={}&startDate={}&endDate={}&' \
-        'userId=0&sessId=0&jsonp=detail_cal_callback&' \
-        'timestamp={}&_={}'.format(
-        luId,today,endDate,'%d'%timestamp,'%d'%(timestamp+200)
-    )
+        'detail_cal_callback&luId=%d&startDate=%s&endDate=%s&' \
+        'userId=0&sessId=0&jsonp=detail_cal_callback'%(
+        luId,today,endDate
+        )
     return url
 
 
 
 queueLock = threading.Lock()
-exitFlag=0
 class getluIdThreading(threading.Thread):
     def __init__(self,threadId,threadName,q):
         threading.Thread.__init__(self)
@@ -36,7 +34,8 @@ class getluIdThreading(threading.Thread):
         self.threadName = threadName
         self.q = q
     def run(self):
-        while not exitFlag:
+        # while not exitFlag:
+        while True:
             queueLock.acquire()
             if not self.q.empty():
                 luId = self.q.get()
@@ -46,14 +45,68 @@ class getluIdThreading(threading.Thread):
                 self.threadName,luId
                 )
                 time.sleep(0.1)
-                getLuId(luId)
+                getRawData(luId)
+                compare(luId)
             else:
-                print 'thread:{} sleeping'.format(
-                self.threadName
-                )
-                time.sleep(0.1)
                 queueLock.release()
-            time.sleep(0.1)
+                return None
+        # else:
+        #     print 'thread:{} finished'.format(
+        #     self.threadName
+        #     )
+        #     time.sleep(0.1)
+        #     queueLock.release()
+        #     time.sleep(0.1)
+
+def getRawData(luId):
+    formator = crab.formator.formator('"content":\[{.+\]}\)')
+    rawData = crab.locator.locator(urlProvidor(luId),formator)
+    if rawData:
+        rawData = rawData[0]
+        content = rawData[10:-2]
+        content = eval(content)
+    else:
+        print 'passed luId: %d'%luId
+        return
+    json={
+    'luId':luId,
+    'SearchTime':datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+    'RawData':content,
+    }
+    crab.database.db({'priceCalendarRaw':json},'insert')
+
+def compare(luId):
+    today = datetime.datetime.now().strftime("%Y-%m-%d")
+    yesterday = (datetime.datetime.now()-datetime.timedelta(1,0)).strftime("%Y-%m-%d")
+    query = lambda x:{'priceCalendarRaw':{
+    'luId':'group by','rawData':'where "%s"=DATE(SearchTime) AND luId=%s'%(x,luId)
+    },}
+    col,rawToday = crab.database.db(query(today),'select')
+    col,rawYesterday = crab.database.db(query(yesterday),'select')
+    if rawYesterday and rawToday:
+        rawNew = eval(rawToday[0][col.index('rawData')])
+        rawOld = eval(rawYesterday[0][col.index('rawData')])
+        for new in rawNew:
+            for old in rawOld:
+                if new['day']==old['day']:
+                    if new.keys()==old.keys():
+                        for key in new.keys():
+                            if new[key]!=old[key]:
+                                change = {
+                                'luId':luId,
+                                'eventDate':new['day'],
+                                'eventType':key,
+                                'valueBefore':old[key],
+                                'valueAfter':new[key],
+                                'rawBefore':old,
+                                'rawAfter':new,
+                                'SearchTime':datetime.datetime.now().strftime(
+                                "%Y-%m-%d %H:%M:%S"
+                                ),
+                                }
+                                crab.database.db(
+                                {'bookingEvent':change}
+                                ,'insert')
 
 def getLuId(luId):
     # try:
@@ -103,88 +156,77 @@ def getLuId(luId):
     #     except:
     #         print 'passed luId %d with no DB errorHandler record'%luId
 
-# for string issues
-true = True
-false = False
-null = ''
-#end string issues
 
-#fetch unique landlordId from DB
-query = {}
-query['luId']={
-    'luId' : 'group by',
-}
-cols, rows = crab.database.db(query,'select')
-#end fetch unique landlordId from DB
-# #fetch exist landlordId from DB
-# query = {}
-# query['landlordInfo']={
-#     'luId' : 'group by',
-# }
-# existCols, existRows = crab.database.db(query,'select')
-# #end fetch exist landlordId from Db
+if __name__ == '__main__':
 
-luIds = [i[cols.index('luId')] for i in rows]
+    # for string issues
+    true = True
+    false = False
+    null = ''
+    #end string issues
 
-# existLandlordIds = [i[existCols.index('landlordId')] for i in existRows]
-# newLandlordIds = [i for i in landlordIds if not i in existLandlordIds]
+    #fetch unique landlordId from DB
+    query = {}
+    query['luId']={
+        'luId' : 'group by',
+    }
+    cols, rows = crab.database.db(query,'select')
+    #end fetch unique landlordId from DB
+
+    luIds = [i[cols.index('luId')] for i in rows]
+    print 'searching %d luIds for priceCalendar'%len(luIds)
 
 
-print 'searching %d luIds for priceCalendar'%len(luIds)
-json={}
-json['timestamp'] = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-json['activity'] = 'searchCalendar'
-json['status'] = 'starting'
-try:
-    crab.database.db({'activityRecord':json},'insert')
-except:
-    pass
-# threading in order to get information for each luId
-exitFlag = 0
-threadList = ['No. %d'%i for i in range(12)]
-threads=[]
-luIdQueue = Queue.Queue(10000)
-for name in threadList:
-    thread = getluIdThreading(
-    threadList.index(name),
-    name,
-    luIdQueue)
-    thread.start()
-    threads.append(thread)
-
-queueLock.acquire()
-for luId in np.random.permutation(luIds):
-    luIdQueue.put(luId)
-queueLock.release()
-
-
-while not luIdQueue.empty():
-    pass
-
-exitFlag = 1
-print 'Empty queue'
-
-for t in threads:
-    t.join()
-
-json={}
-json['timestamp'] = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-json['activity'] = 'searchCalendar'
-json['status'] = 'finished'
-try:
-    crab.database.db({'activityRecord':json},'insert')
-except:
-    pass
-
-# except Exception as inst:
-#     errorHandler = {}
-#     errorHandler['url'] = urlProvidor(city,minprice,minprice+dprice)
-#     errorHandler['description'] = inst.message
-#     errorHandler['errorTime'] = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-#     print 'error result in price : %d - %d '%(minprice,minprice+dprice)
+    json={}
+    json['timestamp'] = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    json['activity'] = 'searchCalendar'
+    json['status'] = 'starting'
+    try:
+        crab.database.db({'activityRecord':json},'insert')
+    except:
+        pass
 
 
 
+    # threading in order to get information for each luId
+    exitFlag = 0
+    luIdQueue = Queue.Queue(12000)
 
-if __name__ == 'main':
-    pass
+    threadList = ['No. %d'%i for i in range(1)]
+    threads=[]
+
+
+    queueLock.acquire()
+    luIdQueue.put(1716586435)
+    for luId in np.random.permutation(luIds)[:0]:
+        luIdQueue.put(luId)
+
+    for name in threadList:
+        thread = getluIdThreading(
+        threadList.index(name),
+        name,
+        luIdQueue)
+        thread.start()
+        threads.append(thread)
+
+    queueLock.release()
+
+
+    # while not luIdQueue.empty():
+    #     pass
+    #
+    # exitFlag = 1
+    # print 'Empty queue'
+
+    for t in threads:
+        t.join()
+
+    print 'All Queue Finished'
+    json={}
+    json['timestamp'] = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    json['activity'] = 'searchCalendar'
+    json['status'] = 'finished'
+    try:
+        crab.database.db({'activityRecord':json},'insert')
+    except:
+        pass

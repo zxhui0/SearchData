@@ -8,18 +8,24 @@ City = ['Beijing','Shanghai','Xiamen','Guangzhou','Chengdu','Shenzhen','Xian','N
         'Chongqing','Wuhan','Suzhou','Wuxi','Qingdao','Sanya','Dalian','Haerbin','Kunming','Xianggang',
         'Shenyang','Zhengzhou']
 CityId = [12,13,76,16,45,17,176,65,26,15,194,67,66,114,144,56,93,225,344,55,103]
-City=['Sanya']
-CityId = [144]
+City =['Beijing','Shanghai','Xiamen','Guangzhou','Sanya']
+CityId = [12,13,76,16,144]
 assert len(City) == len(CityId)
 
-def urlProvidor(cityid,minprice,maxprice):
+def urlProvidor(cityid):
     timestamp =  time.mktime(time.localtime())*1000
-    url = 'http://wireless.xiaozhu.com/app/xzfk/html5/201/search/result?' \
-          'jsonp=api_search_result&cityId={}&offset=0&length=10000&orderBy=recommend' \
-          '&checkInDay=&checkOutDay=&leaseType=&minPrice={}&maxPrice={}&distId=&locId=' \
-          '&jsonp=api_search_result&timestamp={}&_={}'.format(
-        cityid,minprice,maxprice,timestamp,timestamp+200
-    )
+    dict = {
+    'Shanghai':'http://sh.xiaozhu.com/sitemap.xml',
+    'Beijing':'http://bj.xiaozhu.com/sitemap.xml',
+    'Sanya':'http://sanya.xiaozhu.com/sitemap.xml',
+    'Xiamen':'http://xm.xiaozhu.com/sitemap.xml',
+    'Guangzhou':'http://gz.xiaozhu.com/sitemap.xml',
+    }
+    if cityid in CityId:
+        cityname = City[CityId.index(cityid)]
+    else:
+        return None
+    url = dict[cityname]
     return url
 
 
@@ -27,48 +33,38 @@ def urlProvidor(cityid,minprice,maxprice):
 true = True
 false = False
 #end string issues
-format = crab.formator.formator('"item":\[.+\]')
+format = crab.formator.formator('/fangzi/[^<]+\.html</loc>')
 
 for city in np.random.permutation(CityId):
 
     print 'fetching:'+City[CityId.index(city)]
-    dprice = 50
-    for minprice in range(0,1000,dprice+1):
-        try:
-            rawData = crab.locator.locator(urlProvidor(city,minprice,minprice+dprice),format)
+    url = urlProvidor(city)
+    if not url:
+        break
+    rawData = crab.locator.locator(url,format)
+    for line in rawData:
+        luId = {}
+        luId['luId'] = line[len('/fangzi/'):-len('.html</loc>')]
+        luId['cityId'] = city
+        change ={'luId':luId}
+        crab.database.db(change,'insert')
 
-
-            if len(rawData) == 1:
-
-                rawData = rawData[0]
-                content = rawData[7:]
-                content = eval(content)
-                print 'searching price : %d - %d, %d luId returned'%(minprice,minprice+dprice,len(content))
-                if(len(content)>290):
-                    print 'Missing luId due to search limit'
-                    continue
-            else:
-                # print 'empty result in price : %d - %d '%(minprice,minprice+dprice)
-                continue
-
-
-            for json in content:
-                luId = {}
-                luId['luId'] = json['luId']
-                luId['cityId'] = city
-                change ={'luId':luId}
-                crab.database.db(change,'insert')
-        except Exception as inst:
-            errorHandler = {}
-            errorHandler['url'] = urlProvidor(city,minprice,minprice+dprice)
-            errorHandler['description'] = inst.message
-            errorHandler['errorTime'] = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-            print 'error result in price : %d - %d '%(minprice,minprice+dprice)
-
-
-
+        #     for json in content:
+        #         luId = {}
+        #         luId['luId'] = json['luId']
+        #         luId['cityId'] = city
+        #         change ={'luId':luId}
+        #         crab.database.db(change,'insert')
+        # except Exception as inst:
+        #     errorHandler = {}
+        #     errorHandler['url'] = urlProvidor(city,minprice,minprice+dprice)
+        #     errorHandler['description'] = inst.message
+        #     errorHandler['errorTime'] = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        #     print 'error result in price : %d - %d '%(minprice,minprice+dprice)
+        #
+        #
+        #
 
 
 if __name__ == 'main':
     pass
-

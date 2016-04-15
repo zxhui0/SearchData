@@ -21,7 +21,7 @@ dbconfig={
 }
 cnp = connector.connector.pooling.MySQLConnectionPool(
                     pool_name=None,
-                    pool_size=20,
+                    pool_size=1,
                     pool_reset_session=True,
                     **dbconfig)
 
@@ -63,15 +63,19 @@ def db(change,method):
                         )
                     try:
                         c.execute(sqlquery)
-                        if sqlquery != c.statement:
-                            raise ValueError
+                        print sqlquery
+                        # if sqlquery != c.statement:
+                        #     raise ValueError
                         # logger.warning('Last id:{}'.format(c.lastrowid))
                         conn.commit()
+                        c.close()
+                        conn.close()
                         time.sleep(0.001)
                         # logger.info('Successful query : %s'%sqlquery)
                     except Exception as e:
                         logger.error('Exception : %s '%(e.message))
                         logger.error('Failed query : %s '%(sqlquery))
+                        raise ValueError
                 else:
                     logger.error('Incorrect input data kind for function db, using method %s'%(method))
                     raise ValueError
@@ -103,12 +107,16 @@ def db(change,method):
                                         sqlquery = sqlquery + " group by %s"%_sqlsafe(i)
                                         break
                             try:
-                                print sqlquery
                                 c.execute(sqlquery)
+                                print sqlquery
                                 logger.info('Successful query : %s'%sqlquery)
-                                return keys,[i for i in c]
+                                value=[i for i in c]
+                                c.close()
+                                conn.close()
+                                return keys,value
                             except:
                                 logger.error('Failed query : %s '%(sqlquery))
+                                raise ValueError
                         else:
                             logger.error('Please define sqlquery in %s'%connector.BACKEND)
                             raise ValueError
@@ -122,7 +130,7 @@ def db(change,method):
     else:
         logger.error('Incorrect input data kind for function db, using method %s'%method)
         raise ValueError
-    conn.close()
+
 
 
 
@@ -145,7 +153,8 @@ def _preprocessString(x):
         elif(connector.BACKEND == 'mysql'):
             return "'%s'"%x
     elif(isinstance(x,list)):
-        logger.error('_preprocessString illegal input')
-        raise TypeError
+        return '"%s"'%x
+    elif(isinstance(x,dict)):
+        return '"%s"'%x
     else:
         return "%s"%x

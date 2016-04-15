@@ -14,11 +14,9 @@ assert len(City) == len(CityId)
 def urlProvidor(landlordId):
     timestamp =  time.mktime(time.localtime())*1000
     url = 'http://wireless.xiaozhu.com/app/xzfk/html5/201/Fangdong/index?' \
-          'jsonp=fangdongindex_callback&landlordId={}&offset=0&' \
+          'jsonp=fangdongindex_callback&landlordId=%d&offset=0&' \
           'length=5&onlyLodgeunit=false&userId=0&sessId=0&' \
-          'jsonp=fangdongindex_callback&timestamp={}&_={}'.format(
-        landlordId,timestamp,timestamp+200
-    )
+          'jsonp=fangdongindex_callback'%landlordId
     return url
 
 
@@ -93,6 +91,7 @@ for landlordId in np.random.permutation(newLandlordIds):
         exit()
     except:
         try:
+            print 'handling error'
             errorHandler = {}
             errorHandler['url'] = urlProvidor(landlordId)
             errorHandler['description'] = 'failed insert landlordInfo data of luId : %d'%landlordId
@@ -113,5 +112,3 @@ for landlordId in np.random.permutation(newLandlordIds):
 
 if __name__ == 'main':
     pass
-
-
