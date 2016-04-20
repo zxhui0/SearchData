@@ -33,6 +33,19 @@ def urlProvidor(cityid):
 true = True
 false = False
 #end string issues
+
+
+#existing luIds
+query = {}
+query['luId']={
+    'luId' : 'group by',
+}
+cols, rows = crab.database.db(query,'select')
+#end fetch unique landlordId from DB
+
+luIds = [i[cols.index('luId')] for i in rows]
+#end fetching
+
 format = crab.formator.formator('/fangzi/[^<]+\.html</loc>')
 
 for city in np.random.permutation(CityId):
@@ -46,9 +59,10 @@ for city in np.random.permutation(CityId):
         luId = {}
         luId['luId'] = line[len('/fangzi/'):-len('.html</loc>')]
         luId['cityId'] = city
-        change ={'luId':luId}
-        crab.database.db(change,'insert')
-
+        if luId['luId'] not in luIds:
+            change ={'luId':luId}
+            crab.database.db(change,'insert')
+            print 'updated 1'
         #     for json in content:
         #         luId = {}
         #         luId['luId'] = json['luId']
