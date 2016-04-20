@@ -35,6 +35,15 @@ false = False
 #end string issues
 
 
+json={}
+json['timestamp'] = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+json['activity'] = 'searchLuid'
+json['status'] = 'starting'
+try:
+    crab.database.db({'activityRecord':json},'insert')
+except:
+    pass
+
 #existing luIds
 query = {}
 query['luId']={
@@ -44,6 +53,7 @@ cols, rows = crab.database.db(query,'select')
 #end fetch unique landlordId from DB
 
 luIds = [i[cols.index('luId')] for i in rows]
+# print '%d existing luIds'%len(luIds)
 #end fetching
 
 format = crab.formator.formator('/fangzi/[^<]+\.html</loc>')
@@ -59,10 +69,10 @@ for city in np.random.permutation(CityId):
         luId = {}
         luId['luId'] = line[len('/fangzi/'):-len('.html</loc>')]
         luId['cityId'] = city
-        if luId['luId'] not in luIds:
+        if int(luId['luId']) not in luIds:
             change ={'luId':luId}
             crab.database.db(change,'insert')
-            print 'updated 1'
+            # print 'updated %s'%luId['luId']
         #     for json in content:
         #         luId = {}
         #         luId['luId'] = json['luId']
@@ -79,6 +89,14 @@ for city in np.random.permutation(CityId):
         #
         #
 
+json={}
+json['timestamp'] = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+json['activity'] = 'searchLuid'
+json['status'] = 'finished'
+try:
+    crab.database.db({'activityRecord':json},'insert')
+except:
+    pass
 
 if __name__ == 'main':
     pass
