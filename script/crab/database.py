@@ -21,7 +21,7 @@ dbconfig={
 }
 cnp = connector.connector.pooling.MySQLConnectionPool(
                     pool_name=None,
-                    pool_size=14,
+                    pool_size=20,
                     pool_reset_session=True,
                     **dbconfig)
 
@@ -113,6 +113,8 @@ def db(change,method):
                                 conn.close()
                                 return keys,value
                             except:
+                                c.close()
+                                conn.close()
                                 logger.error('Failed query : %s '%(sqlquery))
                                 raise ValueError
                         else:

@@ -78,11 +78,14 @@ def getRawData(luId):
 def compare(luId):
     today = datetime.datetime.now().strftime("%Y-%m-%d")
     yesterday = (datetime.datetime.now()-datetime.timedelta(1,0)).strftime("%Y-%m-%d")
-    query = lambda x:{'priceCalendarRaw':{
-    'luId':'group by','rawData':'where "%s"=DATE(SearchTime) AND luId=%s'%(x,luId)
+    query = lambda x:{'priceCalendarRaw_cache':{
+    'luId':'','rawData':'where "%s"=DATE(SearchTime) AND luId=%s limit 1'%(x,luId)
     },}
+    # print 'luId %s selecting data'%luId
     col,rawToday = crab.database.db(query(today),'select')
+    # print 'luId %s selecting data'%luId
     col,rawYesterday = crab.database.db(query(yesterday),'select')
+    # print 'luId %s selected data'%luId
     if rawYesterday and rawToday:
         rawNew = eval(rawToday[0][col.index('rawData')])
         rawOld = eval(rawYesterday[0][col.index('rawData')])
@@ -107,6 +110,8 @@ def compare(luId):
                                 crab.database.db(
                                 {'bookingEvent':change}
                                 ,'insert')
+
+
 
 def getLuId(luId):
     # try:
@@ -192,7 +197,7 @@ if __name__ == '__main__':
     exitFlag = 0
     luIdQueue = Queue.Queue(12000)
 
-    threadList = ['No. %d'%i for i in range(10)]
+    threadList = ['No. %d'%i for i in range(19)]
     threads=[]
 
 
