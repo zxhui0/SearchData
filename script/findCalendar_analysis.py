@@ -45,8 +45,8 @@ class getluIdThreading(threading.Thread):
                 self.threadName,luId
                 )
                 time.sleep(0.1)
-                getRawData(luId)
-#                compare(luId)
+                # getRawData(luId)
+                compare(luId,data)
             else:
                 queueLock.release()
                 return None
@@ -75,17 +75,15 @@ def getRawData(luId):
     }
     crab.database.db({'priceCalendarRaw':json},'insert')
 
-def compare(luId):
-    today = datetime.datetime.now().strftime("%Y-%m-%d")
-    yesterday = (datetime.datetime.now()-datetime.timedelta(1,0)).strftime("%Y-%m-%d")
-    query = lambda x:{'priceCalendarRaw':{
-    'luId':'','rawData':'where "%s"=DATE(SearchTime) AND luId=%s limit 1'%(x,luId)
-    },}
-    # print 'luId %s selecting data'%luId
-    col,rawToday = crab.database.db(query(today),'select')
-    # print 'luId %s selecting data'%luId
-    col,rawYesterday = crab.database.db(query(yesterday),'select')
-    # print 'luId %s selected data'%luId
+
+def compare(luId,data):
+    
+    try:
+        col,rawToday = ['luId','rawData'],[luId,data['%s_today'%luId]]
+        col,rawToday = ['luId','rawData'],[luId,data['%s_yesterday'%luId]]
+    except:
+        return None
+    
     if rawYesterday and rawToday:
         rawNew = eval(rawToday[0][col.index('rawData')])
         rawOld = eval(rawYesterday[0][col.index('rawData')])
@@ -181,6 +179,18 @@ if __name__ == '__main__':
     luIds = [i[cols.index('luId')] for i in rows]
     print 'searching %d luIds for priceCalendar'%len(luIds)
 
+    today = datetime.datetime.now().strftime("%Y-%m-%d")
+    yesterday = (datetime.datetime.now()-datetime.timedelta(1,0)).strftime("%Y-%m-%d")
+    query = lambda x:{'priceCalendarRaw':{
+    'luId':'group by','rawData':'where "%s"=DATE(SearchTime)'%(x)
+    },}
+    heading, dataToday = crab.database.db(query(today),'select')
+    heading, dataYesterday = crab.database.db(query(yesterday),'select')
+    data = {}
+    for i in dataToday:
+        data['%s_today'%(i[heading.index('luId')])] = i[heading.index('rawData')]
+    for i in dataYesterday:
+        data['%s_yesterday'%(i[heading.index('luId')])] = i[heading.index('rawData')]
 
     json={}
     json['timestamp'] = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
@@ -190,6 +200,7 @@ if __name__ == '__main__':
         crab.database.db({'activityRecord':json},'insert')
     except:
         pass
+
 
 
 
