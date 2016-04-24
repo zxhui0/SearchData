@@ -79,8 +79,8 @@ def getRawData(luId):
 def compare(luId,data):
     
     try:
-        col,rawToday = ['luId','rawData'],[luId,data['%s_today'%luId]]
-        col,rawToday = ['luId','rawData'],[luId,data['%s_yesterday'%luId]]
+        col,rawToday = ['luId','rawData'],[[luId,data['%s_today'%luId]]]
+        col,rawYesterday = ['luId','rawData'],[[luId,data['%s_yesterday'%luId]]]
     except:
         return None
     
@@ -185,7 +185,9 @@ if __name__ == '__main__':
     'luId':'group by','rawData':'where "%s"=DATE(SearchTime)'%(x)
     },}
     heading, dataToday = crab.database.db(query(today),'select')
+    print 'print %s'%(len(dataToday))
     heading, dataYesterday = crab.database.db(query(yesterday),'select')
+    print 'print %s'%(len(dataYesterday))
     data = {}
     for i in dataToday:
         data['%s_today'%(i[heading.index('luId')])] = i[heading.index('rawData')]
