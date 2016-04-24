@@ -184,7 +184,7 @@ if __name__ == '__main__':
 
     json={}
     json['timestamp'] = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    json['activity'] = 'searchCalendar'
+    json['activity'] = 'searchCalendarAnalysis'
     json['status'] = 'starting'
     try:
         crab.database.db({'activityRecord':json},'insert')
@@ -228,7 +228,7 @@ if __name__ == '__main__':
     print 'All Queue Finished'
     json={}
     json['timestamp'] = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    json['activity'] = 'searchCalendar'
+    json['activity'] = 'searchCalendarAnalysis'
     json['status'] = 'finished'
     try:
         crab.database.db({'activityRecord':json},'insert')
