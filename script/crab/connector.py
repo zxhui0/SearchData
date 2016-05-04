@@ -1,6 +1,6 @@
 import mysql.connector
 import mysql.connector.pooling
-HOST = 'xiaozhu.cnm6xr4d9ffx.us-west-2.rds.amazonaws.com'
+HOST = 'ymuriel-imac.physics.lsa.umich.edu'
 USER = 'admin'
 PASSWORD = 'adminmaster'
 DB_NAME = 'xiaozhu'
